@@ -22,13 +22,13 @@ public class GenerarArchivoNotasMedia {
      */
 
     public static void main(String[] args) throws IOException {
-        BufferedReader entrada = null;
+        BufferedReader lectura = null;
         //BufferedWriter salida = null;
 
         try {
-            entrada = new BufferedReader(new FileReader("./archivos/alumnosNotas.txt"));       //Ruta donde se encuentra el archivo a leer.
+            lectura = new BufferedReader(new FileReader("./archivos/alumnosNotas.txt"));       //Ruta donde se encuentra el archivo a leer.
             String cadena;
-            while ((cadena = entrada.readLine()) != null) {        //Leer el archivo línea por línea.
+            while ((cadena = lectura.readLine()) != null) {        //Leer el archivo línea por línea.
                 String[] separar = cadena.split(":");
                 
                 int suma = 0, cantidadNumeros = 0;
@@ -57,8 +57,8 @@ public class GenerarArchivoNotasMedia {
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
-            if (entrada != null)        //Cierra el fichero.
-                entrada.close();
+            if (lectura != null)        //Cierra el fichero.
+                lectura.close();
         }
         
     }

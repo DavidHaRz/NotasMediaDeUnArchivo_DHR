@@ -29,6 +29,7 @@ public class GenerarArchivoNotasMedia {
             lectura = new BufferedReader(new FileReader("./archivos/alumnosNotas.txt"));       //Ruta donde se encuentra el archivo a leer.
             String cadena;
             while ((cadena = lectura.readLine()) != null) {        //Leer el archivo línea por línea.
+                //Separar cada vez que aparezca :
                 String[] separar = cadena.split(":");
                 
                 int suma = 0, cantidadNumeros = 0;
@@ -39,6 +40,8 @@ public class GenerarArchivoNotasMedia {
                     suma += numero;
                     cantidadNumeros ++;
                 }
+                
+                //En la posición 0 están los nombres.
                 String nombre = separar[0];
                 /*
                 String separarNombre = separar[0];
@@ -46,21 +49,16 @@ public class GenerarArchivoNotasMedia {
                 int separar3 = Integer.parseInt(separar[2]);
                 int separar4 = Integer.parseInt(separar[3]);
                    */
-
                 double resultado;
                 resultado = (double)suma / cantidadNumeros;
                 
                 System.out.println("La media de " + nombre + " es: " + resultado);
-            }
-            
-            
+            }         
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
             if (lectura != null)        //Cierra el fichero.
                 lectura.close();
-        }
-        
+        }  
     }
-    
 }

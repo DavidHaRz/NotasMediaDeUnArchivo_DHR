@@ -5,9 +5,11 @@
 package generararchivonotasmedia;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.Buffer;
 
@@ -23,10 +25,11 @@ public class GenerarArchivoNotasMedia {
 
     public static void main(String[] args) throws IOException {
         BufferedReader lectura = null;
-        //BufferedWriter salida = null;
+        BufferedWriter escritura = null;
 
         try {
             lectura = new BufferedReader(new FileReader("./archivos/alumnosNotas.txt"));       //Ruta donde se encuentra el archivo a leer.
+            escritura = new BufferedWriter(new FileWriter("./archivos/alumnosSolucion.txt"));         //Ruta donde se va a escibir la solución
             String cadena;
             while ((cadena = lectura.readLine()) != null) {        //Leer el archivo línea por línea.
                 //Separar cada vez que aparezca :
@@ -52,13 +55,18 @@ public class GenerarArchivoNotasMedia {
                 double resultado;
                 resultado = (double)suma / cantidadNumeros;
                 
-                System.out.println("La media de " + nombre + " es: " + resultado);
+                String linea = "La media de " + nombre + " es: " + resultado;
+                escritura.write(linea + "\n");
+                System.out.println(linea);
+                
             }         
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
             if (lectura != null)        //Cierra el fichero.
                 lectura.close();
+            if (escritura != null)
+                escritura.close();
         }  
     }
 }

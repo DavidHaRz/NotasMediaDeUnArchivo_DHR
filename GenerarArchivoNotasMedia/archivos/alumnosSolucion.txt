@@ -1,0 +1,4 @@
+La media de pepe es: 4.0
+La media de ana es: 7.0
+La media de luisa es: 9.0
+La media de diego es: 4.0
